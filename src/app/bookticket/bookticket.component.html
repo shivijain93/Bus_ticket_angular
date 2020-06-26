@@ -1,0 +1,231 @@
+<div id="bookticket">
+    <br>
+
+<div class="container ticket col-sm-8" *ngIf="isViewTicket">
+    <h4>E- Ticket</h4>
+    <br>
+    <div class="row">
+        <table class="table table-striped ticket1" style="margin-bottom: 0">
+            <tbody>
+                <!-- Data -->
+                <tr>
+                    <th class="tick">Passenger Name</th>
+                    <th class="tick">Mobile</th>
+                    <th class="tick">Seat #</th>
+                    <th class="tick">Status</th>
+                    <th class="tick">Ticket Id</th>
+                </tr>
+                <tr>
+                    <td>{{ticketInfo?.userName}}</td>
+                    <td>{{ticketInfo?.userPhone}}</td>
+                    <td>{{ticketInfo?.seats}}</td>
+                    <td>{{ticketInfo?.status}}</td>
+                    <td>{{ticketInfo?.ticketId}}</td>
+                </tr>
+                <tr>
+                    <th colpan="2" class="tick">Bus Agency</th>
+                    <th class="tick">Bus #</th>
+                    <th class="tick">Departure</th>
+                    <th class="tick">Arrival</th>
+                    <th class="tick"></th>
+                </tr>
+                <tr>
+                    <td colpan="2">{{ticketInfo?.agencyname}}</td>
+                    <td>{{ticketInfo?.busNum}}</td>
+                    <td>{{ticketInfo?.source}} <p>{{ticketInfo?.departTime}} am</p>
+                        <p id="date1">{{ticketInfo?.departDate | date:'mediumDate'}}</p>
+                    </td>
+                    <td>{{ticketInfo?.destination}}<p>{{ticketInfo?.arrivalTime}} pm</p>
+                        <p>{{ticketInfo?.arrivalDate | date:'mediumDate'}}</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="tick">Booking Date</th>
+                    <th colspan="2" class="tick">Booking Time</th>
+                    <th class="tick">Payment Details</th>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ticketInfo?.bookingDate | date:'mediumDate'}}</td>
+                    <td colspan="2">{{ticketInfo?.bookingTime}}</td>
+                    <td>Fare :{{ticketInfo?.fare | currency:'INR'}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+<div *ngIf="busInfo && isBusInfo" class="container busInfo col-sm-5">
+
+    <div class="row">
+        <table class="table table-striped passInfo" style="margin-bottom: 0">
+
+            <thead>
+                <!-- Column names -->
+                <tr>
+                    <th scope="col-sm-12">Bus Details</th>
+                    <th scope="col-sm-12">Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data -->
+                <tr>
+                    <th scope="row">Agency Name:</th>
+                    <td>{{busInfo?.agencyname}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Bus #:</th>
+                    <td>{{busInfo?.busNum}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Source:</th>
+                    <td>{{busInfo?.source}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Destination:</th>
+                    <td>{{busInfo?.destination}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Departure Date:</th>
+                    <td>{{busInfo?.departDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Departure Time:</th>
+                    <td>{{busInfo?.departTime}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Arrival Date:</th>
+                    <td>{{busInfo?.arrivalDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Arrival Time:</th>
+                    <td>{{busInfo?.arrivalTime}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+<div *ngIf="isBusSeats" class="container seatDesign col-sm-5">
+    <div class="row">
+        <ul class="showcase">
+            <li>
+                <div class="seat"></div>
+                <small>Available</small>
+            </li>
+            <li>
+                <div class="seat selected"></div>
+                <small>Selected</small>
+            </li>
+            <li>
+                <div class="seat occupied"></div>
+                <small>Occupied</small>
+            </li>
+        </ul>
+    </div>
+    <form (submit)="confirmSeats()">
+        <div class="row">
+            <div id="s1" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s1'),occupied:occupiedSeats.includes('s1') }">1</div>
+            <div id="s2" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s2'),occupied:occupiedSeats.includes('s2')}">2</div>
+            <div id="s3" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s3'),occupied:occupiedSeats.includes('s3')}">3</div>
+            <div id="s4" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s4'),occupied:occupiedSeats.includes('s4')}">4</div>
+        </div>
+
+        <div class="row">
+            <div id="s5" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s5'),occupied:occupiedSeats.includes('s5')}">5</div>
+            <div id="s6" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s6'),occupied:occupiedSeats.includes('s6')}">6</div>
+            <div id="s7" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s7'),occupied:occupiedSeats.includes('s7')}">7</div>
+            <div id="s8" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s8'),occupied:occupiedSeats.includes('s8')}">8</div>
+        </div>
+
+        <div class="row">
+            <div id="s9" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s9'),occupied:occupiedSeats.includes('s9')}">9</div>
+            <div id="s10" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s10'),occupied:occupiedSeats.includes('s10')}">10</div>
+            <div id="s11" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s11'),occupied:occupiedSeats.includes('s11')}">11</div>
+            <div id="s12" class="seat" (click)="selSeat($event)"
+                [ngClass]="{selected:selSeatArray.includes('s12'),occupied:occupiedSeats.includes('s12')}">12</div>
+        </div>
+
+        <br>
+        <div class="row">
+            <input type="submit" class="btn btn-danger buttonmargin" value="Confirm">
+
+        </div>
+        <div class="row">
+
+            <span *ngIf="!isUserLoggedIn && isConfirmClicked" class="validate">Please Signin to get your tickets
+                booked</span>
+            <span *ngIf="!isMakePayment && isConfirmClicked" class="validate">No Tickets Available</span>
+        </div>
+
+
+        <!-- <p class="text">
+        You have selected <span id="count">0</span> seats for a price of $<span id="price">0</span>
+    </p> -->
+    </form>
+</div>
+
+<br>
+<div class="container cont3 col-sm-3" *ngIf="isMakePayment && isUserLoggedIn">   
+    <h4>Passenger Information</h4>
+    <div class="row">
+
+        <table class="table table-striped passInfo" style="margin-bottom: 0">
+               
+            <thead>
+                <!-- Column names -->
+                <tr>
+                    <th scope="col-sm-12">Passenger</th>
+                    <th scope="col-sm-12">Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data -->
+                <tr>
+                    <th scope="row">Name:</th>
+                    <td>{{userName}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email:</th>
+                    <td>{{userEmail}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Contact:</th>
+                    <td>{{userPhone}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Seat #:</th>
+                    <td>{{bookSeats}}</td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-danger" (click)="makePayment();">Make Payment</button></td>
+                    <td><button *ngIf="isBookingSuccess" class="btn btn-danger" (click)="viewTicket();">View
+                            Ticket</button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <span class="bookingSuccess" *ngIf="isBookingSuccess">Your Ticket has been successfully booked.</span>
+    </div>
+    <div class="row">
+        
+    </div>
+</div>
+
+</div>

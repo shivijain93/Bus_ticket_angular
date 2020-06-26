@@ -1,0 +1,106 @@
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="booking-form">
+                    <form [formGroup]="busData" (submit)="addbus();">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Travel Name</span>
+                                    <input class="form-control" formControlName="travelname" type="text" placeholder="Agency Name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">bus Number</span>
+                                    <input class="form-control" type="text"  placeholder="Bus Number" formControlName="busNum" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="form-label">Source</span>
+                                    <select class="form-control" formControlName="source" placeHolder="Source">
+                                        <option>Source City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Bangalore">Bangalore</option>
+                                        <option value="Madurai">Madurai</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="form-label">Destination</span>
+                                    <select class="form-control" formControlName="destination" placeHolder="Destination">
+                                        <option>Destination City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Bangalore">Bangalore</option>
+                                        <option value="Madurai">Madurai</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">                                
+                                <div class="form-group">
+                                    <span class="form-label">Total Seats</span>
+                                    <input class="form-control" type="number" formControlName="avlSeats" placeholder="Total seats">
+                                </div>                               
+                        </div> 
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Departure Date</span>
+                                    <input class="form-control" type="date" formControlName="departDate" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Departure Time</span>
+                                    <input class="form-control" type="time" formControlName="departTime" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Arrival Date</span>
+                                    <input class="form-control" type="date" formControlName="arrivalDate" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Arrival Time</span>
+                                    <input class="form-control" type="time" formControlName="arrivalTime" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+                            </div>
+                            <div class="col-md-6 subBtn">
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Add Bus" />
+                                    <!-- <button class="submit-btn">Show flights</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

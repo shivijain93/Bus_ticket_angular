@@ -1,0 +1,97 @@
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row text-align-center justify-content-center"><h4 class="welcome" *ngIf="loggedinUser">Welcome {{loggedinUser}}!</h4></div>
+            
+            <br>
+            <div class="row">
+                <div class="booking-form">
+                    <form [formGroup]="busData" (submit)="getBuses();">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Source City</span>
+
+                                    <select class="form-control" formControlName="source">
+                                        <option>Source City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Madurai">Madurai</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Bangalore">Bangalore</option>
+                                    </select>
+
+                                    <!-- <input class="form-control" type="text" placeholder="source City" formControlName="source">  -->
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Destination City</span>
+                                    <select class="form-control" formControlName="destination">
+                                        <option>Destination City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Madurai">Madurai</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Bangalore">Bangalore</option>
+                                    </select>
+                                    <!-- <input class="form-control" type="text" placeholder="Destination City" formControlName="destination"> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Departing</span>
+                                    <input class="form-control" type="date" required formControlName="departDate">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Show Buses" />
+                                    <!-- <button class="submit-btn">Show Buses</button> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Tickets</span>
+                                    <input class="form-control" type="number" required formControlName="ticketcnt">
+                                </div>
+                            </div> -->
+                        </div>                      
+                    </form>
+                </div>
+            </div>
+        </div>
+<hr>
+        <div class="container col-md-7">
+            <table *ngIf="busResults" class="table table-responsive table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">TravelName</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">DepartDate</th>
+                        <th scope="col">DepartTime</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr *ngFor="let bus of busResults ;let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{bus.travelname}}</td>
+                            <td>{{bus.source}}</td>
+                            <td>{{bus.destination}}</td>
+                            <td>{{bus.departDate | date:'mediumDate'}}</td>
+                            <td>{{bus.departTime}}</td>
+                            <td>{{bus.avlSeats}}</td>
+                            <td><a class="booklink" [ngClass]="{booklink:bus.avlSeats === 0}" routerLink="/home/bookticket" (click)="setBusData(bus)">Book</a></td>
+                        </tr>                  
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

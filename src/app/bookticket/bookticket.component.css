@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+/* .img1{
+  background-image: url("../../assets/Img/bus3.jpg");
+  background-size: cover;
+} */
+
+#bookticket
+{
+    margin-top: 50px; 
+  background-size: cover;
+  height:100vh;
+
+}
+.passInfo{
+  background-color: bisque;
+  color:black;
+}
+.container.seatDesign {
+  background-color: bisque;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 66vh;
+  font-family: 'Lato', sans-serif; 
+  opacity:0.9;   
+  /* float:right; */
+  
+}
+
+
+
+
+.container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.seat {
+  background-color: #444451;
+  height: 35px;
+  width: 40px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.seat.selected {
+  background-color: #0dce0d;
+}
+.seat.occupied {
+  background-color:orangered;
+  
+}
+
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;    
+  transform: scale(1);
+}
+  
+  .showcase {
+    background: rgb(250, 60, 250);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: blue;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .showcase li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+  }
+  
+  .showcase li small {
+    margin-left: 2px;
+  }
+.row {
+  display: flex;
+}
+
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: #6feaf6;
+}
+.seat{
+    text-align: center;
+}
+.cont3{
+	background-color: bisque;
+	opacity: .8;
+	color: blue;
+
+}
+.col-sm-12{
+	color: greenyellow;
+}
+
+
+.busInfo{
+
+  float:left;
+  opacity: 0.9;
+
+}
+
+.validate
+{
+  background-color: yellow;
+	color: red;
+}
+
+.buttonmargin{
+	margin-left: 68px;
+}
+.bookingSuccess
+{
+  background-color: yellow;
+  color: green;
+  align-items: center;
+}
+
+
+table.ticket1{
+  background-color: lightgrey !important;
+  border-radius: 15px;
+  color: black !important; 
+}
+th.tick{
+  background-color: green;
+  color: white !important; 
+}
